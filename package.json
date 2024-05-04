@@ -1,0 +1,20 @@
+{
+    "name": "mern-tutorial",
+    "version": "1.0.0",
+    "description": "Goal setter App",
+    "main": "server.js",
+    "scripts": {
+        "start": "node backend/server.js",
+        "server": "nodemon backend/server.js"
+    },
+    "author": "Richard",
+    "license": "MIT",
+    "dependencies": {
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "mongoose": "^8.3.3"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.0"
+    }
+}
