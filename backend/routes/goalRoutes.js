@@ -5,18 +5,19 @@ import {
     updateGoal,
     deleteGoal,
 } from "../controllers/goalController.js";
+import {protect} from "../middleware/authMiddleware.js";
 const router = express.Router();
 
 // GET /api/goals
-router.get("/", getGoals);
+router.get("/", protect, getGoals);
 
 // POST /api/goals
-router.post("/", setGoal);
+router.post("/", protect, setGoal);
 
 // PUT
-router.put("/:id", updateGoal);
+router.put("/:id", protect, updateGoal);
 
 // DELETE
-router.delete("/:id", deleteGoal);
+router.delete("/:id", protect, deleteGoal);
 
 export default router;
