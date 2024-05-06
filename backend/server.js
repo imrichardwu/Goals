@@ -1,3 +1,4 @@
+import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import errorHandler from "./middleware/errorMiddleware.js";
@@ -21,6 +22,19 @@ app.use(express.urlencoded({extended: false}));
 
 app.use("/api/goals", goalRoutes);
 app.use("/api/users", userRoutes);
+
+// serve frontend
+if (process.env.NODE_ENV === "production") {
+    app.use(
+        express.static(path.join(path.join(__dirname, "..//frontend/build")))
+    );
+
+    app.get("*", (req, res) => {
+        res.sendFile(
+            path.resolve(__dirname, "..//frontend", "build", "index.html")
+        );
+    });
+}
 
 // This line of code adds a middleware function that catches any errors that occur during the request-response cycle.
 app.use(errorHandler);

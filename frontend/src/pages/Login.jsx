@@ -25,13 +25,15 @@ function Login() {
         if (isError) {
             toast.error(message);
         }
+
         if (isSuccess || user) {
             navigate("/");
         }
+
         dispatch(reset());
     }, [user, isError, isSuccess, message, navigate, dispatch]);
 
-    const onchange = (e) => {
+    const onChange = (e) => {
         setFormData((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
@@ -68,7 +70,7 @@ function Login() {
                                 name="email"
                                 value={email}
                                 placeholder="Enter your email"
-                                onChange={onchange}
+                                onChange={onChange}
                             />
                         </div>
                         <div className="form-group">
@@ -79,7 +81,7 @@ function Login() {
                                 name="password"
                                 value={password}
                                 placeholder="Enter your password"
-                                onChange={onchange}
+                                onChange={onChange}
                             />
                         </div>
                         <button type="submit" className="btn btn-primary">
